@@ -71,7 +71,7 @@ def HillClimbing ():
     myBoard = make_initial_state(size)
     h = get_h_cost(myBoard)
     print("Initial State : %s   With h : %s " % (myBoard, h))
-    for i in range(6000): #  while h!= bestState :
+    for i in range(6000): #  while h!= bestState : # شرط خاتمه یامی تواند این باشد که بهترین تابع ارزیابی پیدا شود یا تعداد گامی را در نظر بگیریم
         neighbours = make_neighbour(myBoard)
         h_list = []
         for item in neighbours:
@@ -121,32 +121,27 @@ def Genetic ():
         for i in range(round(numberOfFathers / 2) + 1):
             children = crossOver(fathers[i], fathers[i + 1], list(children))
 
-        # print("CrossOver Children : %s " % children)
+     
 
         mutationChildren = []
 
         for i in range(round(len(children) / 2)):
             ChosenChild = randint(0, len(children) - 1)
-            # print("i = %s , ChosenChild = %s "% (i , ChosenChild))
-
+         
             child = list(children[ChosenChild])
-            # print("Child : %s " % child)
-
+        
             pointOfMutation = randint(0, len(child) - 1)
-            # print("pointOfMutation : %s " % pointOfMutation)
-
+           
             newValue = randint(0, len(child) - 1)
-            # print("newValue : %s " %newValue)
-
+        
             child[pointOfMutation] = newValue
-            # print("new child : %s " % child)
-
+           
             mutationChildren.append(list(child))
 
-        # print("new Children : %s " % mutationChildren )
+      
         newChildren = children + mutationChildren
         allPopulation = fathers + newChildren
-        # print("All Population : %s " % allPopulation)
+      
 
         newPopulation = []
 
